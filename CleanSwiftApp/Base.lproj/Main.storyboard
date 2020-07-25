@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ydT-v3-5Zn">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,65 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CleanSwiftApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="134"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="AXY-ui-fUk">
+            <objects>
+                <viewController id="ydT-v3-5Zn" customClass="LoginViewController" customModule="CleanSwiftApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N1U-TA-lKP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wfV-Am-sXb">
+                                <rect key="frame" x="40" y="417" width="334" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oiB-k0-WXL">
+                                <rect key="frame" x="40" y="459" width="334" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3A-Qd-TBZ">
+                                <rect key="frame" x="188" y="510" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="signinButton:" destination="ydT-v3-5Zn" eventType="touchUpInside" id="Fl7-2J-uO3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oiB-k0-WXL" firstAttribute="leading" secondItem="dpp-oM-FJd" secondAttribute="leading" constant="40" id="7bs-vf-1kU"/>
+                            <constraint firstItem="wfV-Am-sXb" firstAttribute="top" secondItem="dpp-oM-FJd" secondAttribute="top" constant="417" id="9i8-cU-uPC"/>
+                            <constraint firstItem="oiB-k0-WXL" firstAttribute="top" secondItem="wfV-Am-sXb" secondAttribute="bottom" constant="8" id="GhW-Ws-Xaz"/>
+                            <constraint firstItem="dpp-oM-FJd" firstAttribute="trailing" secondItem="oiB-k0-WXL" secondAttribute="trailing" constant="40" id="IAc-9b-g3Z"/>
+                            <constraint firstItem="y3A-Qd-TBZ" firstAttribute="centerX" secondItem="N1U-TA-lKP" secondAttribute="centerX" id="SN8-Av-ZZb"/>
+                            <constraint firstItem="wfV-Am-sXb" firstAttribute="leading" secondItem="dpp-oM-FJd" secondAttribute="leading" constant="40" id="ebL-Hc-LFg"/>
+                            <constraint firstItem="dpp-oM-FJd" firstAttribute="trailing" secondItem="wfV-Am-sXb" secondAttribute="trailing" constant="40" id="vPJ-tC-PE9"/>
+                            <constraint firstItem="y3A-Qd-TBZ" firstAttribute="top" secondItem="oiB-k0-WXL" secondAttribute="bottom" constant="17" id="wzr-kV-9xV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dpp-oM-FJd"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="wfV-Am-sXb" id="CVe-ez-mLm"/>
+                        <outlet property="passwordTextField" destination="oiB-k0-WXL" id="Bdu-oG-H25"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UVp-Sk-8gh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1179.7101449275362" y="174.77678571428569"/>
         </scene>
     </scenes>
 </document>

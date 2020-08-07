@@ -9,11 +9,11 @@
 import Foundation
 import Alamofire
 protocol ProductWorkerProtocol {
-    func fetchProducts(callBack:  @escaping(Result<ProductEntity.Response, Error>) -> Void)
+    func fetchProducts(callBack:  @escaping(Result<[ProductEntity.Response], Error>) -> Void)
 }
 
 class ProductWorker: ProductWorkerProtocol {
-    func fetchProducts(callBack: @escaping (Result<ProductEntity.Response, Error>) -> Void) {
+    func fetchProducts(callBack: @escaping (Result<[ProductEntity.Response], Error>) -> Void) {
         AF.request("https://cleanswift.free.beeceptor.com/productlist",
                             method: .get)
                             .validate()
@@ -24,8 +24,7 @@ class ProductWorker: ProductWorkerProtocol {
                                        let json = response.data
                                            do {
                                                
-                                           let products = try JSONDecoder().decode(ProductEntity.Response.self, from: json!)
-                                               
+                                           let products = try JSONDecoder().decode([ProductEntity.Response].self, from: json!)
                                            callBack(.success(products))
                                            
                                            }catch DecodingError.typeMismatch(let type, let context) {

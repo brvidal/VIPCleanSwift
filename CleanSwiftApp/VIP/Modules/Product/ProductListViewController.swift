@@ -19,7 +19,10 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic
   var interactor: ProductListBusinessLogic?
   var router: (NSObjectProtocol & ProductListRoutingLogic & ProductListDataPassing)?
 
+    var delegate: ProductViewDelegate?
     
+    @IBOutlet weak var productTableView: UITableView!
+  
     var products: [Products] = []
   // MARK: Object lifecycle
   
@@ -34,6 +37,8 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic
     super.init(coder: aDecoder)
     setup()
   }
+    
+    
   
   // MARK: Setup
   
@@ -68,8 +73,20 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    delegate = self
     fetch()
+    setupTableView()
   }
+    
+  // MARK: Setup
+    func setupTableView(){
+        productTableView.delegate = self
+        productTableView.dataSource = self
+        productTableView.register(UINib(nibName: "ProductListTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductListTableViewCell")
+        productTableView.rowHeight = UITableView.automaticDimension
+        productTableView.separatorStyle = .none
+        
+    }
   
   // MARK: Do something
   
@@ -83,6 +100,38 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic
     func displayProducts(viewModel: ProductEntity.ViewModel)
   {
     self.products = viewModel.products
-    //nameTextField.text = viewModel.name
+    self.productTableView.reloadData()
   }
+}
+
+
+extension ProductListViewController: UITableViewDelegate, UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListTableViewCell", for: indexPath) as? ProductListTableViewCell
+                
+          let products = self.products[indexPath.row]
+          cell?.setData(product: products)
+        return cell!
+                
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product = self.products[indexPath.row]
+        delegate?.didItemPressed(product: product)
+    }
+ 
+}
+
+
+extension ProductListViewController: ProductViewDelegate {
+    func didItemPressed(product: Products) {
+        print("didPree", product.productName)
+//        rout
+    }
+     
 }

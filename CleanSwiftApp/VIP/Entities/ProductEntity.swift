@@ -14,10 +14,19 @@ enum ProductEntity {
         
     }
     struct Response: Codable {
-        var products: [Products]
+         let id: Int
+           let productName, productPrice, productDescription, brandName: String
+
+           enum CodingKeys: String, CodingKey {
+               case id
+               case productName = "product_name"
+               case productPrice = "product_price"
+               case productDescription = "product_description"
+               case brandName = "brand_name"
+           }
     }
     
     struct ViewModel: Codable {
-        var products: [Products]
+        let products: [Products]
     }
 }

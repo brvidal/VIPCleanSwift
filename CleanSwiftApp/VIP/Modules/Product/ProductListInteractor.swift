@@ -21,8 +21,7 @@ protocol ProductListDataStore
 
 class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore
 {
-  
-    
+
   var presenter: ProductListPresentationLogic?
   var worker: ProductWorker?
   
@@ -33,6 +32,7 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore
     worker?.fetchProducts() { (response) in
         switch(response){
         case .success(let result):
+            
             self.presenter?.presentProducts(response: result)
             break;
         
@@ -42,7 +42,6 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore
         }
                  
     }
-        
-      }
+        }
    
 }

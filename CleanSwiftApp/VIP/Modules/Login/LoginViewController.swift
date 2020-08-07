@@ -18,6 +18,9 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    var router: (NSObjectProtocol & LoginRoutingLogic)?
+
+    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
      {
@@ -37,6 +40,18 @@ class LoginViewController: UIViewController, LoginViewProtocol {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+      if let scene = segue.identifier {
+        let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+        if let router = router, router.responds(to: selector) {
+          router.perform(selector, with: segue)
+        }
+      }
+    }
+    
     @IBAction func signinButton(_ sender: UIButton) {
         if let email = emailTextField.text, let password =  passwordTextField.text {
             interactor?.login(email: email, password: password)
@@ -45,6 +60,8 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     
     func set(viewModel: LoginEntity.ViewModel) {
         print("EMAIL", viewModel.email!)
+        router?.routeToProductList(segue: nil)
+        
     }
     
 }

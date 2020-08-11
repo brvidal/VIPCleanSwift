@@ -14,28 +14,28 @@ import UIKit
 
 protocol ProductDetailBusinessLogic
 {
-  func doSomething(request: ProductDetail.Something.Request)
+  func getProduct()
 }
 
 protocol ProductDetailDataStore
 {
-  //var name: String { get set }
+    var product: ProductEntity.Response! {get set}
 }
 
 class ProductDetailInteractor: ProductDetailBusinessLogic, ProductDetailDataStore
 {
+  
   var presenter: ProductDetailPresentationLogic?
   var worker: ProductDetailWorker?
-  //var name: String = ""
+  var product: ProductEntity.Response!
   
   // MARK: Do something
   
-  func doSomething(request: ProductDetail.Something.Request)
+  func getProduct()
   {
-    worker = ProductDetailWorker()
-    worker?.doSomeWork()
+//    worker = ProductDetailWorker()
     
-    let response = ProductDetail.Something.Response()
-    presenter?.presentSomething(response: response)
+    presenter?.presentProduct(response: product)
+ 
   }
 }

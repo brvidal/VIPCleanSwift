@@ -101,5 +101,35 @@
             </objects>
             <point key="canvasLocation" x="2121.739130434783" y="187.50000000000003"/>
         </scene>
+        <!--Product Detail View Controller-->
+        <scene sceneID="kRr-rq-alh">
+            <objects>
+                <viewController storyboardIdentifier="ProductDetailViewController" id="7Sp-QU-lgN" customClass="ProductDetailViewController" customModule="CleanSwiftApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rNr-yd-8Wk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-zS-kpV">
+                                <rect key="frame" x="186" y="357.66666666666669" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="afZ-zS-kpV" firstAttribute="centerY" secondItem="rNr-yd-8Wk" secondAttribute="centerY" id="0eQ-aC-V0G"/>
+                            <constraint firstItem="afZ-zS-kpV" firstAttribute="centerX" secondItem="rNr-yd-8Wk" secondAttribute="centerX" id="fKi-k1-VzJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6s0-uT-qgS"/>
+                    </view>
+                    <connections>
+                        <outlet property="productName" destination="afZ-zS-kpV" id="Fh8-bb-Qtu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOO-gV-8sU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2878" y="191"/>
+        </scene>
     </scenes>
 </document>

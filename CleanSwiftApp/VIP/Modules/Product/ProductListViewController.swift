@@ -127,11 +127,8 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource
  
 }
 
-
 extension ProductListViewController: ProductViewDelegate {
     func didItemPressed(product: Products) {
-        print("didPree", product.productName)
-//        rout
+        router?.routeToProductDetail(segue: nil)
     }
-     
 }

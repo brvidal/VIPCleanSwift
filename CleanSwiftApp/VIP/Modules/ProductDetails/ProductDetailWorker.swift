@@ -16,5 +16,6 @@ class ProductDetailWorker
 {
   func doSomeWork()
   {
+    
   }
 }

@@ -11,7 +11,7 @@ import UIKit
 
 @objc protocol ProductListRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func routeToProductDetail(segue: UIStoryboardSegue?)
 }
 
 protocol ProductListDataPassing
@@ -26,32 +26,37 @@ class ProductListRouter: NSObject, ProductListRoutingLogic, ProductListDataPassi
   
   // MARK: Routing
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+  func routeToProductDetail(segue: UIStoryboardSegue?)
+  {
+    if let segue = segue {
+      let destinationVC = segue.destination as! ProductDetailViewController
+      var destinationDS = destinationVC.router!.dataStore!
+      passDataToProductDetail(source: dataStore!, destination: &destinationDS)
+    } else {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let destinationVC = storyboard.instantiateViewController(withIdentifier: "ProductDetailViewController") as! ProductDetailViewController
+      var destinationDS = destinationVC.router!.dataStore!
+      passDataToProductDetail(source: dataStore!, destination: &destinationDS)
+      navigateToProductDetail(source: viewController!, destination: destinationVC)
+    }
+  }
 
   // MARK: Navigation
   
-  //func navigateToSomewhere(source: ProductListViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+  func navigateToProductDetail(source: ProductListViewController, destination: ProductDetailViewController)
+  {
+    source.show(destination, sender: nil)
+  }
   
   // MARK: Passing data
   
-  //func passDataToSomewhere(source: ProductListDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  func passDataToProductDetail(source: ProductListDataStore, destination: inout ProductDetailDataStore)
+  {
+    let selectedRow = viewController?.productTableView.indexPathForSelectedRow?.row
+    let selectedProduct = source.products?[selectedRow!]
+    destination.product = selectedProduct
+    
+//    destination.product = selectedProduct
+    
+  }
 }

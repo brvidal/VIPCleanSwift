@@ -20,8 +20,6 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     @IBOutlet weak var passwordTextField: UITextField!
     var router: (NSObjectProtocol & LoginRoutingLogic)?
 
-    
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
      {
        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -59,9 +57,7 @@ class LoginViewController: UIViewController, LoginViewProtocol {
     }
     
     func set(viewModel: LoginEntity.ViewModel) {
-        print("EMAIL", viewModel.email!)
         router?.routeToProductList(segue: nil)
-        
     }
     
 }

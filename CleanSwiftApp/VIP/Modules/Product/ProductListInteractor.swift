@@ -16,12 +16,14 @@ protocol ProductListBusinessLogic
 
 protocol ProductListDataStore
 {
-  //var name: String { get set }
+    var products: [ProductEntity.Response]! {get set}
 }
 
 class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore
 {
 
+  var products: [ProductEntity.Response]!
+    
   var presenter: ProductListPresentationLogic?
   var worker: ProductWorker?
   
@@ -32,7 +34,7 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore
     worker?.fetchProducts() { (response) in
         switch(response){
         case .success(let result):
-            
+            self.products = result
             self.presenter?.presentProducts(response: result)
             break;
         
@@ -42,6 +44,6 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore
         }
                  
     }
-        }
+ }
    
 }

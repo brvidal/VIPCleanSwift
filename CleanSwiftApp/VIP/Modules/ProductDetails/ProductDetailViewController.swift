@@ -37,16 +37,7 @@ class ProductDetailViewController: UIViewController, ProductDetailDisplayLogic
   
   private func setup()
   {
-    let viewController = self
-    let interactor = ProductDetailInteractor()
-    let presenter = ProductDetailPresenter()
-    let router = ProductDetailRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
+    ClassConfiguration.productDetailsModule(configure: self)
   }
   
   // MARK: Routing
@@ -70,8 +61,6 @@ class ProductDetailViewController: UIViewController, ProductDetailDisplayLogic
   }
   
   // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
   
   func doSomething()
   {

@@ -11,13 +11,11 @@ import UIKit
 protocol ProductListPresentationLogic
 {
     func presentProducts(response: [ProductEntity.Response])
-    func interactor(_ interactor: ProductListBusinessLogic, didFailWith object: Error)
+    func interactor(_ interactor: ProductListBusinessLogic, didFailWith object: Error) // Error handler
 }
 
 class ProductListPresenter: ProductListPresentationLogic
 {
-   
-
   weak var viewController: ProductListDisplayLogic?
   
   // MARK: Do something

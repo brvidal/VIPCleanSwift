@@ -21,8 +21,10 @@ protocol ProductListDataPassing
 
 class ProductListRouter: NSObject, ProductListRoutingLogic, ProductListDataPassing
 {
-  weak var viewController: ProductListViewController?
   var dataStore: ProductListDataStore?
+    
+  weak var viewController: ProductListViewController?
+  
   
   // MARK: Routing
   
@@ -55,8 +57,6 @@ class ProductListRouter: NSObject, ProductListRoutingLogic, ProductListDataPassi
     let selectedRow = viewController?.productTableView.indexPathForSelectedRow?.row
     let selectedProduct = source.products?[selectedRow!]
     destination.product = selectedProduct
-    
-//    destination.product = selectedProduct
-    
   }
+    
 }

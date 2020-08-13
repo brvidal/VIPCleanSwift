@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+
 protocol ProductWorkerProtocol {
     func fetchProducts(callBack:  @escaping(Result<[ProductEntity.Response], Error>) -> Void)
 }

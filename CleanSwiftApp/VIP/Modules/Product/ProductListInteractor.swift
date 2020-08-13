@@ -11,7 +11,7 @@ import UIKit
 
 protocol ProductListBusinessLogic
 {
-  func fetchCart()
+  func fetchProducts()
 }
 
 protocol ProductListDataStore
@@ -23,15 +23,16 @@ class ProductListInteractor: ProductListBusinessLogic, ProductListDataStore
 {
 
   var products: [ProductEntity.Response]!
-    
   var presenter: ProductListPresentationLogic?
-  var worker: ProductWorker?
-  
-  // MARK: Do something
-  
-    func fetchCart() {
-    worker = ProductWorker()
-    worker?.fetchProducts() { (response) in
+    
+  private let worker: ProductWorkerProtocol
+    
+    required init(withProductWorker productWorker: ProductWorkerProtocol) {
+        self.worker = productWorker
+    }
+    
+    func fetchProducts() {
+        worker.fetchProducts() { (response) in
         switch(response){
         case .success(let result):
             self.products = result

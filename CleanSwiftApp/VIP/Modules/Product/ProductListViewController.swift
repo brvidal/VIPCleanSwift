@@ -38,22 +38,11 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic
     setup()
   }
     
-    
-  
   // MARK: Setup
   
   private func setup()
   {
-    let viewController = self
-    let interactor = ProductListInteractor()
-    let presenter = ProductListPresenter()
-    let router = ProductListRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
+    ClassConfiguration.productListModule(configure: self)
   }
   
   // MARK: Routing
@@ -88,13 +77,9 @@ class ProductListViewController: UIViewController, ProductListDisplayLogic
         
     }
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
   func fetch()
   {
-    interactor?.fetchCart()
+    interactor?.fetchProducts()
   }
   
     func displayProducts(viewModel: ProductEntity.ViewModel)
@@ -121,14 +106,13 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product = self.products[indexPath.row]
-        delegate?.didItemPressed(product: product)
+        delegate?.didItemPressed()
     }
  
 }
 
 extension ProductListViewController: ProductViewDelegate {
-    func didItemPressed(product: Products) {
+    func didItemPressed() {
         router?.routeToProductDetail(segue: nil)
     }
 }

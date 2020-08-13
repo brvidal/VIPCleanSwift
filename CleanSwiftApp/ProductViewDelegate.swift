@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ProductViewDelegate: class {
-    func didItemPressed(product: Products)
+    func didItemPressed()
 }

@@ -25,9 +25,13 @@ protocol ProductDetailDataStore
 class ProductDetailInteractor: ProductDetailBusinessLogic, ProductDetailDataStore
 {
   
+  var product: ProductEntity.Response!
+    
+    
+    
+    
   var presenter: ProductDetailPresentationLogic?
   var worker: ProductDetailWorker?
-  var product: ProductEntity.Response!
   
   // MARK: Do something
   
